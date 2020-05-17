@@ -16,18 +16,25 @@
 					<td width="800px">
 					<h1>Pre-Corona</h2>
 					<p>Upload an image of Post-Corona <Form Name="" Method="" Action=""></p>
-						<input type="file" multiple="false"
-						accepte="image/*" id="finput"
-						onchange="upload()" >
-					<script type="text/javascript"
+						<input type="file" onchange="readURL(this);" />
+							<img id ="blah" src="#" alt="your image" />
+					<script>
+						<script type="text/javascript"
 					src="http://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js">
-						function upload() {
-							var imgcanvas = document.getElementById("can");
-							var fileinput = document.getElementById("finput");
-							var image = new SimpleImage(fileinput);
-							image.drawTo(imgcanvas);
+						function readURL(input) {
+           						if (input.files && input.files[0]) {
+ 								var reader = new FileReader();
+
+                						reader.onload = function (e) {
+                    							$('#blah')
+                        							.attr('src', e.target.result)
+                        							.width(150)
+                        							.height(200);
+                						};
+
+                						reader.readAsDataURL(input.files[0]);
+            						}
 						}
-					</script>
 					</Form>
 					</td>
 				<tr/>
